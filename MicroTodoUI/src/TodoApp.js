@@ -6,9 +6,9 @@ import { Box } from '@mui/material';
 import config from './config'; // Import the config file with environment variable support
 
 // Use the config to define API URLs
-const GET_TASKS_API_BASE_URL = config.GET_TASKS_API_BASE_URL;
-const DELETE_TASK_API_BASE_URL = config.DELETE_TASK_API_BASE_URL;
-const CREATE_TASK_API_BASE_URL = config.CREATE_TASK_API_BASE_URL;
+const GET_TASKS_API_BASE_URL = "http://gettask.techno028.shop";
+const DELETE_TASK_API_BASE_URL = "http://deletetask.techno028.shop";
+const CREATE_TASK_API_BASE_URL = "http://addtask.techno028.shop";
 
 //Update Task Functionality is Work In Progress
 // const UPDATE_TASK_API_BASE_URL = '';
