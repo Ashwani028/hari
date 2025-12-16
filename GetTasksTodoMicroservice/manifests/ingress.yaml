@@ -7,7 +7,7 @@ metadata:
 spec:  
   ingressClassName:  azure-application-gateway
   rules:
-  - host: gettasks.techno028.shop
+  - host: gettask.techno028.shop
     http:
      paths:
      - backend:
