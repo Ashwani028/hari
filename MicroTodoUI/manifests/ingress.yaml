@@ -10,10 +10,11 @@ spec:
   - host: todoui.techno028.shop
     http:
      paths:
-     - backend:
-         service:
-           name:  todo-ui
-           port: 
-            number:  80
-       path: /
-       pathType:  Prefix
+      - path: "/"
+        pathType: Prefix     
+        backend:
+          service:
+            name: todo-ui
+            port: 
+              number: 80
+
