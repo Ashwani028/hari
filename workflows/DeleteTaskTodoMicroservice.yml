@@ -1,0 +1,46 @@
+name: Build and Push to ACR
+
+on:
+  workflow_dispatch:  # Isse tum manually GitHub se trigger kar sakte ho
+
+permissions:
+  id-token: write
+  contents: read
+  
+jobs:
+  build-and-push:
+    runs-on: self-hosted
+
+
+    env:
+      IMAGE_NAME: todo-delete-tasks-api
+      IMAGE_TAG: v1
+      ACR_NAME: acrdevtodoproject010
+      ACR_LOGIN_SERVER: acrdevtodoproject010.azurecr.io
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 2336c462-9059-4c1b-8417-64f88777a05b
+          tenant-id: 57464fa0-05a4-4855-a9af-e5be611b8553
+          subscription-id: 635e9286-14d1-435f-b7e1-af1ebf689f4e
+
+      - name: Log in to ACR
+        run: |
+          az acr login -n $(ACR_NAME)
+
+      - name: Build Docker Image
+        run: |
+          docker build -t $IMAGE_NAME:$IMAGE_TAG -f DeleteTaskTodoMicroservice/Dockerfile DeleteTaskTodoMicroservice
+
+      - name: Tag Docker Image for ACR
+        run: |
+          docker tag $IMAGE_NAME:$IMAGE_TAG $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG
+
+      - name: Push Docker Image to ACR
+        run: |
+          docker push $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG

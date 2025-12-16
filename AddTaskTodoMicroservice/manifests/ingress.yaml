@@ -1,0 +1,19 @@
+apiVersion:  networking.k8s.io/v1
+kind:  Ingress
+metadata:
+  name:  ingress-addtasks 
+  labels:
+    app:  addtasks
+spec:  
+  ingressClassName:  azure-application-gateway
+  rules:
+  - host: addtasks.techno028.shop
+    http:
+     paths:
+     - backend:
+         service:
+           name:  todo-add-tasks-api
+           port: 
+            number:  80
+       path: /
+       pathType:  Prefix
