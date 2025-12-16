@@ -17,5 +17,4 @@ spec:
            name:  todo-delete-tasks-api
            port: 
             number:  80
-       path: /
-       pathType:  Prefix
+
