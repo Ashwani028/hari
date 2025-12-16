@@ -10,10 +10,11 @@ spec:
   - host: gettask.techno028.shop
     http:
      paths:
-     - backend:
+      - pathType: Prefix
+        path: "/"
+        backend:
          service:
            name:  todo-get-task-api
            port: 
             number:  80
-       path: /
-       pathType:  Prefix
+
