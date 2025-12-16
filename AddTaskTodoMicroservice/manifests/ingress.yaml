@@ -15,5 +15,5 @@ spec:
            name:  todo-add-tasks-api
            port: 
             number:  80
-       path: /addtask
+       path: /
        pathType: Prefix
