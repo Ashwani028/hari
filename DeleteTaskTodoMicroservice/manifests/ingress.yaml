@@ -10,7 +10,9 @@ spec:
   - host: deletetask.techno028.shop
     http:
      paths:
-     - backend:
+      - pathType: Prefix
+        path: "/"
+        backend:
          service:
            name:  todo-delete-tasks-api
            port: 
